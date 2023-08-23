@@ -1,0 +1,37 @@
+[2023-08-22T02:38:20.357+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Investimento_api.Extracao_Invest manual__2023-08-22T02:38:18.834971+00:00 [queued]>
+[2023-08-22T02:38:20.365+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Investimento_api.Extracao_Invest manual__2023-08-22T02:38:18.834971+00:00 [queued]>
+[2023-08-22T02:38:20.365+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-08-22T02:38:20.380+0000] {taskinstance.py:1382} INFO - Executing <Task(SparkSubmitOperator): Extracao_Invest> on 2023-08-22 02:38:18.834971+00:00
+[2023-08-22T02:38:20.385+0000] {standard_task_runner.py:57} INFO - Started process 167 to run task
+[2023-08-22T02:38:20.388+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Investimento_api', 'Extracao_Invest', 'manual__2023-08-22T02:38:18.834971+00:00', '--job-id', '134', '--raw', '--subdir', 'DAGS_FOLDER/dag.py', '--cfg-path', '/tmp/tmpslmxrtwf']
+[2023-08-22T02:38:20.392+0000] {standard_task_runner.py:85} INFO - Job 134: Subtask Extracao_Invest
+[2023-08-22T02:38:20.438+0000] {task_command.py:415} INFO - Running <TaskInstance: Investimento_api.Extracao_Invest manual__2023-08-22T02:38:18.834971+00:00 [running]> on host e852237e1259
+[2023-08-22T02:38:20.514+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Investimento_api' AIRFLOW_CTX_TASK_ID='Extracao_Invest' AIRFLOW_CTX_EXECUTION_DATE='2023-08-22T02:38:18.834971+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-08-22T02:38:18.834971+00:00'
+[2023-08-22T02:38:20.527+0000] {base.py:73} INFO - Using connection ID 'spark_standalone' for task execution.
+[2023-08-22T02:38:20.529+0000] {spark_submit.py:340} INFO - Spark-Submit cmd: spark-submit --master  --name Extracao_Invest ../operators/Raw_Operator.py
+[2023-08-22T02:38:21.633+0000] {spark_submit.py:491} INFO - WARNING: An illegal reflective access operation has occurred
+[2023-08-22T02:38:21.634+0000] {spark_submit.py:491} INFO - WARNING: Illegal reflective access by org.apache.spark.unsafe.Platform (file:/home/***/.local/lib/python3.8/site-packages/pyspark/jars/spark-unsafe_2.12-3.2.0.jar) to constructor java.nio.DirectByteBuffer(long,int)
+[2023-08-22T02:38:21.635+0000] {spark_submit.py:491} INFO - WARNING: Please consider reporting this to the maintainers of org.apache.spark.unsafe.Platform
+[2023-08-22T02:38:21.636+0000] {spark_submit.py:491} INFO - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+[2023-08-22T02:38:21.636+0000] {spark_submit.py:491} INFO - WARNING: All illegal access operations will be denied in a future release
+[2023-08-22T02:38:21.685+0000] {spark_submit.py:491} INFO - Exception in thread "main" org.apache.spark.SparkException: Master must either be yarn or start with spark, mesos, k8s, or local
+[2023-08-22T02:38:21.686+0000] {spark_submit.py:491} INFO - at org.apache.spark.deploy.SparkSubmit.error(SparkSubmit.scala:972)
+[2023-08-22T02:38:21.686+0000] {spark_submit.py:491} INFO - at org.apache.spark.deploy.SparkSubmit.prepareSubmitEnvironment(SparkSubmit.scala:238)
+[2023-08-22T02:38:21.687+0000] {spark_submit.py:491} INFO - at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:898)
+[2023-08-22T02:38:21.687+0000] {spark_submit.py:491} INFO - at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:180)
+[2023-08-22T02:38:21.688+0000] {spark_submit.py:491} INFO - at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:203)
+[2023-08-22T02:38:21.688+0000] {spark_submit.py:491} INFO - at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:90)
+[2023-08-22T02:38:21.688+0000] {spark_submit.py:491} INFO - at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1043)
+[2023-08-22T02:38:21.689+0000] {spark_submit.py:491} INFO - at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1052)
+[2023-08-22T02:38:21.689+0000] {spark_submit.py:491} INFO - at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+[2023-08-22T02:38:21.703+0000] {taskinstance.py:1943} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/apache/spark/operators/spark_submit.py", line 156, in execute
+    self._hook.submit(self._application)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/apache/spark/hooks/spark_submit.py", line 422, in submit
+    raise AirflowException(
+airflow.exceptions.AirflowException: Cannot execute: spark-submit --master  --name Extracao_Invest ../operators/Raw_Operator.py. Error code is: 1.
+[2023-08-22T02:38:21.706+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=Investimento_api, task_id=Extracao_Invest, execution_date=20230822T023818, start_date=20230822T023820, end_date=20230822T023821
+[2023-08-22T02:38:21.719+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 134 for task Extracao_Invest (Cannot execute: spark-submit --master  --name Extracao_Invest ../operators/Raw_Operator.py. Error code is: 1.; 167)
+[2023-08-22T02:38:21.765+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-08-22T02:38:21.791+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check

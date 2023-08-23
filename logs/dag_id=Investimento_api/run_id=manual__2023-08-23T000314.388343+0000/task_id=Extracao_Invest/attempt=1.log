@@ -1,0 +1,27 @@
+[2023-08-23T00:03:16.526+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Investimento_api.Extracao_Invest manual__2023-08-23T00:03:14.388343+00:00 [queued]>
+[2023-08-23T00:03:16.535+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Investimento_api.Extracao_Invest manual__2023-08-23T00:03:14.388343+00:00 [queued]>
+[2023-08-23T00:03:16.535+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-08-23T00:03:16.550+0000] {taskinstance.py:1382} INFO - Executing <Task(SparkSubmitOperator): Extracao_Invest> on 2023-08-23 00:03:14.388343+00:00
+[2023-08-23T00:03:16.556+0000] {standard_task_runner.py:57} INFO - Started process 408 to run task
+[2023-08-23T00:03:16.560+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Investimento_api', 'Extracao_Invest', 'manual__2023-08-23T00:03:14.388343+00:00', '--job-id', '19', '--raw', '--subdir', 'DAGS_FOLDER/dag.py', '--cfg-path', '/tmp/tmpkdo6brs2']
+[2023-08-23T00:03:16.563+0000] {standard_task_runner.py:85} INFO - Job 19: Subtask Extracao_Invest
+[2023-08-23T00:03:16.613+0000] {task_command.py:415} INFO - Running <TaskInstance: Investimento_api.Extracao_Invest manual__2023-08-23T00:03:14.388343+00:00 [running]> on host 50926c283932
+[2023-08-23T00:03:16.684+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Investimento_api' AIRFLOW_CTX_TASK_ID='Extracao_Invest' AIRFLOW_CTX_EXECUTION_DATE='2023-08-23T00:03:14.388343+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-08-23T00:03:14.388343+00:00'
+[2023-08-23T00:03:16.694+0000] {connection.py:232} WARNING - Connection schemes (type: spark_jdbc) shall not contain '_' according to RFC3986.
+[2023-08-23T00:03:16.695+0000] {base.py:73} INFO - Using connection ID 'spark-submit' for task execution.
+[2023-08-23T00:03:16.696+0000] {spark_submit.py:340} INFO - Spark-Submit cmd: spark-submit --master spark://b6bbbdb31c9d:7077 --name Extracao_Invest ../operators/Raw_Operator.py
+[2023-08-23T00:03:16.864+0000] {spark_submit.py:491} INFO - /home/***/.local/lib/python3.8/site-packages/pyspark/bin/load-spark-env.sh: line 68: ps: command not found
+[2023-08-23T00:03:18.825+0000] {spark_submit.py:491} INFO - python3: can't open file '/opt/operators/Raw_Operator.py': [Errno 2] No such file or directory
+[2023-08-23T00:03:18.844+0000] {spark_submit.py:491} INFO - 23/08/23 00:03:18 INFO ShutdownHookManager: Shutdown hook called
+[2023-08-23T00:03:18.846+0000] {spark_submit.py:491} INFO - 23/08/23 00:03:18 INFO ShutdownHookManager: Deleting directory /tmp/spark-2e6dd4b0-3fcf-4d8a-914e-dd5cfd0868cf
+[2023-08-23T00:03:18.879+0000] {taskinstance.py:1943} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/apache/spark/operators/spark_submit.py", line 156, in execute
+    self._hook.submit(self._application)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/apache/spark/hooks/spark_submit.py", line 422, in submit
+    raise AirflowException(
+airflow.exceptions.AirflowException: Cannot execute: spark-submit --master spark://b6bbbdb31c9d:7077 --name Extracao_Invest ../operators/Raw_Operator.py. Error code is: 2.
+[2023-08-23T00:03:18.883+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=Investimento_api, task_id=Extracao_Invest, execution_date=20230823T000314, start_date=20230823T000316, end_date=20230823T000318
+[2023-08-23T00:03:18.899+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 19 for task Extracao_Invest (Cannot execute: spark-submit --master spark://b6bbbdb31c9d:7077 --name Extracao_Invest ../operators/Raw_Operator.py. Error code is: 2.; 408)
+[2023-08-23T00:03:18.941+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-08-23T00:03:18.963+0000] {taskinstance.py:2784} INFO - 0 downstream tasks scheduled from follow-on schedule check
